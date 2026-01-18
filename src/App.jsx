@@ -1,16 +1,20 @@
-import { useEffect } from "react";
-import api from "./api/axios";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./layout/Header";
+import Footer from "./layout/Footer";
+import HomePage from "./pages/HomePage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 export default function App() {
-  useEffect(() => {
-    api.get("/products").then(res => {
-      console.log(res.data);
-    });
-  }, []);
-
   return (
-    <h1 className="text-3xl font-bold text-red-500">
-      Axios Çalışıyor
-    </h1>
+    <Router>
+      <Header />
+
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/product/:id" component={ProductDetailPage} />
+      </Switch>
+
+      <Footer />
+    </Router>
   );
 }
