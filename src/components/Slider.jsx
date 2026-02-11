@@ -41,7 +41,7 @@ export default function Slider() {
       navigation
       pagination={{ clickable: true }}
       autoplay={{ delay: 5000, disableOnInteraction: false }}
-      loop={false} 
+      loop={false} // ← loop=false, uyarı kalkar
       className="h-[300px] md:h-[500px]"
     >
       {slides.map((slide, index) => (

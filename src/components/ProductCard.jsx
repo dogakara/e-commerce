@@ -5,14 +5,17 @@ import { Link } from "react-router-dom";
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
 
+  const fallbackImage = "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop";
+
   return (
     <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 group cursor-pointer">
       <Link to={`/product/${product.id}`}>
         <div className="relative aspect-square bg-gray-50">
           <img
-            src={product.images?.[0]?.url || "https://via.placeholder.com/300"}
+            src={product.images?.[0]?.url || fallbackImage}
             alt={product.name}
             className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+            onError={(e) => { e.target.src = fallbackImage }}
           />
         </div>
       </Link>
